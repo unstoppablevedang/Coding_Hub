@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Code_Hub</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #222;
+      background-color: #e8e8e8;
+    }
+
+    .corner {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      z-index: 0;
+    }
+
+    .top-left { top: 0; left: 0; }
+    .top-right { top: 0; right: 0; }
+    .bottom-left { bottom: 0; left: 0; }
+    .bottom-right { bottom: 0; right: 0; }
+
+    .shape, .rect {
+      position: absolute;
+      opacity: 0.8;
+      transform-origin: center;
+    }
+
+    /* SWAPPED */
+    .shape {
+      border-radius: 50%;
+      background: transparent;
+      border: 4px solid #0054A8;
+      animation: floaty 6s ease-in-out infinite;
+    }
+
+    .rect {
+      border-radius: 8px;
+      background: #00A300;
+      animation: floaty 7s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(15px, -25px) rotate(10deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+
+    header, nav, main, footer {
+      position: relative;
+      z-index: 1;
+      padding: 0 1rem;
+    }
+
+    header {
+      padding: 3rem 1rem 1.5rem;
+      text-align: center;
+    }
+
+    /* SWAPPED */
+    .main-title {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.85);
+      border: 3px solid #00A300;
+      border-radius: 2em;
+      padding: 0.7em 1.8em;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #00A300;
+      box-shadow: 0 0 15px rgba(0,163,0,0.4),
+                  0 0 10px rgba(0,84,168,0.3);
+    }
+
+    .tagline {
+      font-style: italic;
+      font-size: 1.2rem;
+      margin-top: 0.8rem;
+      color: #0054A8;
+      font-weight: 600;
+    }
+
+    /* SWAPPED */
+    nav {
+      background: rgba(0, 84, 168, 0.95);
+      border-radius: 0 0 15px 15px;
+      margin-bottom: 2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0.7rem 0;
+    }
+
+    nav ul li {
+      margin: 0.5rem 1rem;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    main {
+      padding: 2rem 1.5rem 4rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      padding: 1rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    /* SWAPPED */
+    h2 {
+      border-left: 5px solid #00A300;
+      padding-left: 10px;
+      color: #0054A8;
+      margin-bottom: 1rem;
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    /* SWAPPED */
+    .nav-buttons a {
+      background: #0054A8;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      min-width: 120px;
+    }
+
+    .nav-buttons a:hover {
+      background-color: #003f7f;
+    }
+
+    /* SWAPPED */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 2px solid #00A300;
+    }
+
+    @media (max-width: 600px) {
+      .main-title { font-size: 1.5rem; padding: 0.5em 1em; }
+      .nav-buttons a { flex: 1 1 100%; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="corner top-left"></div>
+  <div class="corner top-right"></div>
+  <div class="corner bottom-left"></div>
+  <div class="corner bottom-right"></div>
+
+  <header>
+    <h1 class="main-title"> &nbsp  Coding_Hub  &nbsp </h1>
+    <p class="tagline"><u>Empowering Learners</u></p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Explore</a></li>
+      <li><a href="Disclaimer.html">Terms</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>
+      Welcome to Coding_Hub, a learning platform created for students and beginners who want to understand coding in a clear and practical way. Coding_Hub focuses on simplifying concepts through well-structured coding notes and hands-on examples, making it easier for learners to build a strong foundation without feeling overwhelmed.
+<br><br>Along with free learning resources, Coding_Hub also offers premium notes and ready-to-run code projects for those who want deeper explanations and real practice. All content is designed with a beginner-first approach—simple language, step-by-step guidance, and useful examples—to help learners confidently grow their coding skills and start building on their own.
+<br><br> Read <a href="Disclaimer.html">Terms & Conditions and Privacy Policy (click here)</a> before use.
+      </p>
+    </section>
+
+    <section id="services">
+      <h2>Explore</h2>
+      <div class="nav-buttons">
+        <a href="#">Coding Notes</a>
+        <a href="Ready-to-run.html">Ready-to-Run Codes</a>
+        <a href="#">Project Guides</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Designed by Learners — Designed for Learners</p>
+  </footer>
+
+  <script>
+    const corners = document.querySelectorAll('.corner');
+
+    corners.forEach(corner => {
+      const numShapes = 6 + Math.floor(Math.random() * 4);
+      for (let i = 0; i < numShapes; i++) {
+        const shape = document.createElement('div');
+        const isCircle = Math.random() > 0.5;
+        const size = 30 + Math.random() * 100;
+
+        shape.style.width = size + 'px';
+        shape.style.height = size + 'px';
+        shape.style.top = Math.random() * 220 + 'px';
+        shape.style.left = Math.random() * 220 + 'px';
+
+        shape.className = isCircle ? 'shape' : 'rect';
+        corner.appendChild(shape);
+      }
+    });
+  </script>
+
+</body>
+</html>
