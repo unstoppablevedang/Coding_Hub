@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ready-to-Run Codes</title>
+
+<style>
+/* ================= RESET ================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: #f4f8fb;
+  text-align: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ================= CANVAS ================= */
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ================= CORNER SHAPES ================= */
+.corner {
+  position: fixed;
+  width: 260px;
+  height: 260px;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.corner.top-left { top: 0; left: 0; }
+.corner.top-right { top: 0; right: 0; }
+.corner.bottom-left { bottom: 0; left: 0; }
+.corner.bottom-right { bottom: 0; right: 0; }
+
+.shape, .rect {
+  position: absolute;
+  opacity: 0.18;
+  animation: float 14s linear infinite;
+}
+
+.shape {
+  border-radius: 50%;
+  background: #0054A8;
+}
+
+.rect {
+  background: #00A300;
+}
+
+@keyframes float {
+  from { transform: translateY(0) rotate(0deg); }
+  to   { transform: translateY(-260px) rotate(360deg); }
+}
+
+/* ================= HEADER ================= */
+header {
+  position: relative;
+  z-index: 5;
+  background: linear-gradient(90deg, #0054A8, #00A300);
+  color: #fff;
+  padding: 26px;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+}
+
+/* ================= CONTENT ================= */
+.container {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 50px 25px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.card {
+  background: #ffffff;
+  border: 2px solid #0054A8;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+}
+
+.card h3 {
+  color: #0054A8;
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #333;
+  min-height: 60px;
+}
+
+/* ================= BUTTON ================= */
+.btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 24px;
+  border-radius: 9px;
+  background: #00A300;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+  background: #007a00;
+  transform: scale(1.06);
+}
+
+/* ================= FOOTER ================= */
+footer {
+  position: relative;
+  z-index: 5;
+  background: #0054A8;
+  color: white;
+  padding: 22px 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
+}
+
+footer p {
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="corner top-left"></div>
+<div class="corner top-right"></div>
+<div class="corner bottom-left"></div>
+<div class="corner bottom-right"></div>
+
+<header>Ready-to-Run Codes</header>
+
+<div class="container">
+  <div class="card">
+    <h3>Friend_game</h3>
+    <p>A simple CLI-based adventure game written in Python.</p>
+    <a class="btn" href="#">Get</a>
+  </div>
+
+  <div class="card">
+    <h3>Marksfinder</h3>
+    <p>Python program to calculate percentage from marks.</p>
+    <a class="btn" href="#">Get</a>
+  </div>
+
+  <div class="card">
+    <h3>Simple Calculator</h3>
+    <p>A basic calculator implemented using Python.</p>
+    <a class="btn" href="#">Get</a>
+  </div>
+</div>
+
+<footer>
+  <p>Designed by Learners — Designed for Learners</p>
+</footer>
+
+<!-- ================= HEXAGON BACKGROUND ================= -->
+<script>
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+class Hex {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.s = Math.random() * 18 + 10;
+    this.c = Math.random() > 0.5 ? "#0054A8" : "#00A300";
+    this.v = Math.random() * 0.3 + 0.2;
+  }
+  draw() {
+    ctx.beginPath();
+    for (let i = 0; i < 6; i++) {
+      const a = Math.PI / 3 * i;
+      ctx.lineTo(this.x + this.s * Math.cos(a), this.y + this.s * Math.sin(a));
+    }
+    ctx.closePath();
+    ctx.strokeStyle = this.c;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+  move() {
+    this.y += this.v;
+    if (this.y > canvas.height + this.s) this.y = -this.s;
+    this.draw();
+  }
+}
+
+const hexes = Array.from({ length: 35 }, () => new Hex());
+
+(function animate() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  hexes.forEach(h => h.move());
+  requestAnimationFrame(animate);
+})();
+</script>
+
+<!-- ================= CORNER SHAPES ================= -->
+<script>
+document.querySelectorAll('.corner').forEach(corner => {
+  const n = 6 + Math.floor(Math.random() * 4);
+  for (let i = 0; i < n; i++) {
+    const d = document.createElement('div');
+    const size = 30 + Math.random() * 100;
+    d.style.width = d.style.height = size + 'px';
+    d.style.top = Math.random() * 220 + 'px';
+    d.style.left = Math.random() * 220 + 'px';
+    d.style.animationDuration = (8 + Math.random() * 10) + 's';
+    d.className = Math.random() > 0.5 ? 'shape' : 'rect';
+    corner.appendChild(d);
+  }
+});
+</script>
+
+</body>
+</html>
